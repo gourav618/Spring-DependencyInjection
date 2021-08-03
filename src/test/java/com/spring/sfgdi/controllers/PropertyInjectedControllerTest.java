@@ -1,11 +1,8 @@
 package com.spring.sfgdi.controllers;
 
-import com.spring.sfgdi.services.GreetingService;
-import com.spring.sfgdi.services.GreetingServiceImpl;
+import com.spring.sfgdi.services.ConstructorGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 //least preferred method
 class PropertyInjectedControllerTest {
@@ -17,7 +14,7 @@ class PropertyInjectedControllerTest {
         //setting the controller Object by directly accessing  GreetingServiceImpl
         controller = new PropertyInjectedController();
 
-        controller.greetingService = new GreetingServiceImpl() ;
+        controller.greetingService = new ConstructorGreetingService() ;
     }
 
     @Test

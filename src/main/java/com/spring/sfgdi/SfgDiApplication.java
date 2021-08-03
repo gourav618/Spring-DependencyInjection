@@ -18,9 +18,8 @@ public class SfgDiApplication {
 		//Spring is creating Object for this(MyController) and we are naming that bean as myController
 		MyController myController = (MyController) ctx.getBean("myController");
 
-		String greeting = myController.sayHello();
-
-		System.out.println(greeting);
+		System.out.println("-----------Primary Bean");
+		System.out.println(myController.sayHello());
 
 		//common mistake when using Spring for di
 		//Note the controller class should be @Controller to set this Bean and Service Object @AutoWired else we would get NPE

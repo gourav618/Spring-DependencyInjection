@@ -1,6 +1,8 @@
 package com.spring.sfgdi;
 
 import com.spring.sfgdi.controllers.*;
+import com.spring.sfgdi.services.PrototypeBean;
+import com.spring.sfgdi.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -43,6 +45,17 @@ public class SfgDiApplication {
 		System.out.println("---------Constructor");
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.getGreeting());
+
+		SingletonBean singletonBean1 = ctx.getBean("singletonBean", SingletonBean.class);
+		System.out.println(singletonBean1.getMyScope());
+		SingletonBean singletonBean2 = ctx.getBean("singletonBean", SingletonBean.class);
+		System.out.println(singletonBean2.getMyScope());
+
+		PrototypeBean prototypeBean1 = ctx.getBean("prototypeBean", PrototypeBean.class);
+		System.out.println(prototypeBean1.getMyScope());
+		PrototypeBean prototypeBean2 = ctx.getBean("prototypeBean", PrototypeBean.class);
+		System.out.println(prototypeBean2.getMyScope());
+
 	}
 
 }

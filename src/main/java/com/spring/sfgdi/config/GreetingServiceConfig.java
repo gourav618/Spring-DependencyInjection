@@ -2,6 +2,8 @@ package com.spring.sfgdi.config;
 
 //java based config example
 
+import com.spring.sfgdi.repositories.EnglishGreetingRepository;
+import com.spring.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import com.spring.sfgdi.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,10 +38,16 @@ public class GreetingServiceConfig {
         return new PrimaryInjectedGreetingService();
     }
 
+    //java config has use DI to use this in eng greeting service
+    @Bean
+    EnglishGreetingRepository englishGreetingRepository(){
+        return new EnglishGreetingRepositoryImpl();
+    }
+
     @Profile("EN")
     @Bean
-    I18nEnglishGreetingService i18nService(){
-        return new I18nEnglishGreetingService();
+    I18nEnglishGreetingService i18nService(EnglishGreetingRepository englishGreetingRepository){
+        return new I18nEnglishGreetingService(englishGreetingRepository);
     }
 
     @Profile({"ES","default"})

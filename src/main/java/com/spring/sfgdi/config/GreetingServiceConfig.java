@@ -2,6 +2,8 @@ package com.spring.sfgdi.config;
 
 //java based config example
 
+import com.spring.pets.PetService;
+import com.spring.pets.PetServiceFactory;
 import com.spring.sfgdi.repositories.EnglishGreetingRepository;
 import com.spring.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import com.spring.sfgdi.services.*;
@@ -9,10 +11,27 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
 
 @Configuration
 public class GreetingServiceConfig {
+
+
+    @Bean
+    PetServiceFactory petServiceFactory(){
+        return new PetServiceFactory();
+    }
+
+    @Profile({"dog","default"})
+    @Bean
+    PetService dogPetService(){
+        return petServiceFactory().getPetService("dog");
+    }
+
+    @Profile("cat")
+    @Bean
+    PetService catPetService(){
+        return petServiceFactory().getPetService("cat");
+    }
 
     //beans are created here for the greeting services and bean name by default is method name
     //Note: @Service anotation removed from these classes and bean are init here

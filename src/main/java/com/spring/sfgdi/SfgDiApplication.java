@@ -7,7 +7,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 //overriding default component Scan
-@ComponentScan(basePackages = {"com.spring.sfgdi", "com.spring.pets"})
+// @ComponentScan(basePackages = {"com.spring.sfgdi", "com.spring.pets"})
+//above not needed since we used factory bean and used java config for DI
 @SpringBootApplication
 public class SfgDiApplication {
 

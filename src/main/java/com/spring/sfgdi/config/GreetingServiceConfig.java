@@ -7,11 +7,10 @@ import com.spring.pets.PetServiceFactory;
 import com.spring.sfgdi.repositories.EnglishGreetingRepository;
 import com.spring.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import com.spring.sfgdi.services.*;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 
+//import resources from xml configuration
+@ImportResource("classpath:di-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 
@@ -35,10 +34,12 @@ public class GreetingServiceConfig {
 
     //beans are created here for the greeting services and bean name by default is method name
     //Note: @Service anotation removed from these classes and bean are init here
-    @Bean
-    ConstructorGreetingService constructorGreetingService(){
-        return new ConstructorGreetingService();
-    }
+
+    //note commented since this bean declared using xml configuration
+    //@Bean
+//    ConstructorGreetingService constructorGreetingService(){
+//        return new ConstructorGreetingService();
+//    }
 
     @Bean
     PropertyInjectedGreetingService propertyInjectedGreetingService(){

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
+import javax.annotation.PostConstruct;
 
 @Component
 public class LifeCycleDemoBean implements InitializingBean, DisposableBean, BeanNameAware,
@@ -38,7 +39,6 @@ public class LifeCycleDemoBean implements InitializingBean, DisposableBean, Bean
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         System.out.println("### Application Context has been Set");
     }
-
 
     public void beforeInit() {
         System.out.println("### LifeCycleBean Before Initialization");

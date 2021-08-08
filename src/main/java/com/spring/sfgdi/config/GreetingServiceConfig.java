@@ -2,11 +2,12 @@ package com.spring.sfgdi.config;
 
 //java based config example
 
-import com.spring.sfgdi.services.ConstructorGreetingService;
-import com.spring.sfgdi.services.PropertyInjectedGreetingService;
-import com.spring.sfgdi.services.SetterInjectedGreetingService;
+import com.spring.sfgdi.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 
 @Configuration
 public class GreetingServiceConfig {
@@ -26,5 +27,24 @@ public class GreetingServiceConfig {
     @Bean
     SetterInjectedGreetingService setterInjectedGreetingService(){
         return new SetterInjectedGreetingService();
+    }
+
+    //setting bean as primary
+    @Primary
+    @Bean
+    PrimaryInjectedGreetingService primaryInjectedGreetingService(){
+        return new PrimaryInjectedGreetingService();
+    }
+
+    @Profile("EN")
+    @Bean
+    I18nEnglishGreetingService i18nService(){
+        return new I18nEnglishGreetingService();
+    }
+
+    @Profile({"ES","default"})
+    @Bean("i18nService")
+    I18nSpanishGreetingService i18nSpanishGreetingService(){
+        return new I18nSpanishGreetingService();
     }
 }

@@ -1,10 +1,8 @@
 package com.spring.sfgdi.services;
 
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
-
-@Profile("EN")
-@Service("i18nService")
+//Note: Set using java config and since we had service name we will name our method as same not callName with lowerCase
+//@Profile("EN")
+//@Service("i18nService")
 public class I18nEnglishGreetingService implements GreetingService{
     @Override
     public String sayGreeting() {

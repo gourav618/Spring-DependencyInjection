@@ -1,6 +1,7 @@
 package com.spring.sfgdi;
 
 import com.spring.sfgdi.config.DiConfiguration;
+import com.spring.sfgdi.config.DiConstructorConfig;
 import com.spring.sfgdi.controllers.*;
 import com.spring.sfgdi.datasource.FakeDataSource;
 import com.spring.sfgdi.services.PrototypeBean;
@@ -63,11 +64,17 @@ public class SfgDiApplication {
 		System.out.println(fakeDataSource.getPassword());
 		System.out.println(fakeDataSource.getJdbcURL());
 
-		System.out.println("------------Config Props Bean");
+		System.out.println("------------Config Props Bean-- Property Binding");
 		DiConfiguration diConfiguration = ctx.getBean(DiConfiguration.class);
 		System.out.println(diConfiguration.getUsername());
 		System.out.println(diConfiguration.getPassword());
 		System.out.println((diConfiguration.getJdbcURL()));
+
+		System.out.println("------------Config Props Bean -- Constructor binding");
+		DiConstructorConfig diConstructorConfig = ctx.getBean(DiConstructorConfig.class);
+		System.out.println(diConstructorConfig.getUsername());
+		System.out.println(diConstructorConfig.getPassword());
+		System.out.println(diConstructorConfig.getJdbcURL());
 
 	}
 

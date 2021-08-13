@@ -9,8 +9,10 @@ import com.spring.sfgdi.repositories.EnglishGreetingRepository;
 import com.spring.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import com.spring.sfgdi.services.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
+@EnableConfigurationProperties(DiConstructorConfig.class)
 //NOTE: in spring boot we can have our own var in app.prop so datasource.prop deleted
 //@PropertySource("classpath:datasource.properties") --> annotation from spring framework
 //import resources from xml configuration

@@ -11,7 +11,8 @@ import com.spring.sfgdi.services.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
-@PropertySource("classpath:datasource.properties")
+//NOTE: in spring boot we can have our own var in app.prop so datasource.prop deleted
+//@PropertySource("classpath:datasource.properties") --> annotation from spring framework
 //import resources from xml configuration
 @ImportResource("classpath:di-config.xml")
 @Configuration

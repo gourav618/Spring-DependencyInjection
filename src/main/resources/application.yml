@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: dog,EN,
+
+com:
+  username: YmluserName
+  password: YmlPassword
+  jdbcURL: https://Yml/mysql

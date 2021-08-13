@@ -1,5 +1,6 @@
 package com.spring.sfgdi;
 
+import com.spring.sfgdi.config.DiConfiguration;
 import com.spring.sfgdi.controllers.*;
 import com.spring.sfgdi.datasource.FakeDataSource;
 import com.spring.sfgdi.services.PrototypeBean;
@@ -7,7 +8,6 @@ import com.spring.sfgdi.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 
 //overriding default component Scan
 // @ComponentScan(basePackages = {"com.spring.sfgdi", "com.spring.pets"})
@@ -57,10 +57,17 @@ public class SfgDiApplication {
 		PrototypeBean prototypeBean2 = ctx.getBean("prototypeBean", PrototypeBean.class);
 		System.out.println(prototypeBean2.getMyScope());
 
+		System.out.println("------------Fake Data Source");
 		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
 		System.out.println(fakeDataSource.getUsername());
 		System.out.println(fakeDataSource.getPassword());
 		System.out.println(fakeDataSource.getJdbcURL());
+
+		System.out.println("------------Config Props Bean");
+		DiConfiguration diConfiguration = ctx.getBean(DiConfiguration.class);
+		System.out.println(diConfiguration.getUsername());
+		System.out.println(diConfiguration.getPassword());
+		System.out.println((diConfiguration.getJdbcURL()));
 
 	}
 
